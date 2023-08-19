@@ -6,9 +6,9 @@ import serverless from 'serverless-http';
 import cors from 'cors';
 
 // eslint-disable-next-line import/no-import-module-exports
-import connectDB from '../mongodb/connect.js';
-import postRoutes from '../routes/postRoutes.js';
-import dalleRoutes from '../routes/dalleRoutes.js';
+import connectDB from './mongodb/connect.js';
+import postRoutes from './routes/postRoutes.js';
+import dalleRoutes from './routes/dalleRoutes.js';
 
 const app = express();
 // app.use(cors());
