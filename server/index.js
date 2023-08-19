@@ -1,20 +1,21 @@
 import express from 'express';
-import * as dotenv from 'dotenv';
+// const serverless = require("serverless-http");
+// eslint-disable-next-line import/no-extraneous-dependencies
+import serverless from 'serverless-http';
 import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
 import postRoutes from './routes/postRoutes.js';
 import dalleRoutes from './routes/dalleRoutes.js';
 
-dotenv.config();
-
 const app = express();
 // app.use(cors());
-app.use(
-  cors({
-    origin: ['*'],
-  }),
-);
+// app.use(
+//   cors({
+//     origin: ['*'],
+//   }),
+// );
+app.options('*', cors()); // include before other routes
 
 app.use(express.json({ limit: '50mb' }));
 
@@ -37,3 +38,17 @@ const startServer = async () => {
 };
 
 startServer();
+
+// const app = express();
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.json({
+    hello: 'hi!',
+  });
+});
+
+app.use('/.netlify/functions/api', router);
+
+module.exports = app;
+module.exports.handler = serverless(app);

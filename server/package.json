@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "build": "node ."
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "dev": "nodemon index",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +17,10 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.8.2",
+    "netlify-lambda": "^1.4.3",
     "nodemon": "^2.0.20",
-    "openai": "^3.1.0"
+    "openai": "^3.1.0",
+    "serverless-http": "^1.10.1"
   },
   "devDependencies": {
     "eslint": "^8.31.0",
