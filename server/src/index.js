@@ -1,12 +1,14 @@
+/* eslint-disable import/no-import-module-exports */
 import express from 'express';
 // const serverless = require("serverless-http");
 // eslint-disable-next-line import/no-extraneous-dependencies
 import serverless from 'serverless-http';
 import cors from 'cors';
 
-import connectDB from './mongodb/connect.js';
-import postRoutes from './routes/postRoutes.js';
-import dalleRoutes from './routes/dalleRoutes.js';
+// eslint-disable-next-line import/no-import-module-exports
+import connectDB from '../mongodb/connect.js';
+import postRoutes from '../routes/postRoutes.js';
+import dalleRoutes from '../routes/dalleRoutes.js';
 
 const app = express();
 // app.use(cors());
@@ -48,7 +50,7 @@ router.get('/', (req, res) => {
   });
 });
 
-app.use('/.netlify/functions/api', router);
+app.use('/.netlify/functions/hello-world/hello-world', router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
