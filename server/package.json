@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node src/index",
     "dev": "nodemon src/index",
-    "build": "mkdir nothing",
-    "deploy":"netlify deploy --prod"
+    "worker": "node jobs.js",
+    "postinstall": "echo 'meow'"
   },
   "author": "",
   "license": "ISC",
